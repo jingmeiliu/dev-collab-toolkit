@@ -1,0 +1,45 @@
+# 通用后端开发规范（简版）
+
+> **用途**: 新项目或未定制 backend rule 时的默认 SSOT 模板
+> **定制**: 安装时按 Spring Boot / Node / Go 等实际栈覆盖
+
+---
+
+## 1. 技术栈假设
+
+- Java：Spring Boot + MyBatis-Plus（多模块 Maven）
+- 或 Node：NestJS / Express
+- 统一响应：`CommonResult<T>` / 等效包装
+
+## 2. 分层约定（Java 示例）
+
+```
+Controller → Service → Repository(DO/Mapper) → Manage/Client(外部)
+```
+
+## 3. 包路径
+
+- **必须** 通过 `codegraph_explore` 确认现有 Controller/DO 包路径
+- 禁止臆造 `com.example` 等未索引路径
+
+## 4. 接口约定
+
+| 操作 | 方法 | 路径模式 |
+|------|------|----------|
+| 创建 | POST | `/module/resource/create` |
+| 更新 | PUT | `/module/resource/update` |
+| 删除 | DELETE | `/module/resource/delete` |
+| 详情 | GET | `/module/resource/get` |
+| 分页 | GET | `/module/resource/page` |
+
+## 5. 新增模块流程
+
+1. Codegraph 查同类模块结构
+2. DO → Mapper → Service → Controller → VO
+3. `mvn compile` 验证
+4. 同步前端 API + collaboration 规范
+
+## 6. 禁止
+
+- 手写 JSON 代码地图
+- 跳过 compile 自检

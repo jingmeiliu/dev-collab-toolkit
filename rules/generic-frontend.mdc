@@ -1,0 +1,45 @@
+# 通用前端开发规范（简版）
+
+> **用途**: 新项目或未定制 frontend rule 时的默认 SSOT 模板
+> **定制**: 安装 dev-collab-toolkit 时由 dual-ai-onboarding / 架构师 按实际框架覆盖
+
+---
+
+## 1. 技术栈假设
+
+- SPA 框架：Vue 3 / React（按项目检测）
+- 构建：Vite
+- 状态：Pinia / Zustand
+- UI：Element Plus / Ant Design（按项目）
+
+## 2. 目录约定
+
+```
+frontend/
+├── src/
+│   ├── views/       # 页面
+│   ├── components/  # 公共组件
+│   ├── api/         # API 封装
+│   ├── stores/      # 状态
+│   ├── utils/       # 工具
+│   └── router/      # 路由
+```
+
+## 3. 编码规范
+
+- 组件：`<script setup>`（Vue）或函数组件 + Hooks（React）
+- API：统一 request 封装，解包后端 `CommonResult`
+- 命名：组件 PascalCase，文件 kebab-case 或与组件同名
+- 样式：scoped CSS / CSS Modules；避免全局污染
+
+## 4. 新增页面流程
+
+1. `codegraph_explore` 查同类页面路径
+2. 创建 view + api + route
+3. 菜单/权限配置（若项目有）
+4. `npm run lint` → `npm run build`
+
+## 5. 禁止
+
+- 臆造 API 路径（须与后端 Controller 对齐）
+- 跳过 lint/build 自检

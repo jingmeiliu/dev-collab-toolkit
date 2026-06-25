@@ -1,0 +1,39 @@
+# 通用前后端协作规范（简版）
+
+> **用途**: 新项目默认 SSOT；已有项目由 dual-ai-onboarding 合并定制
+
+---
+
+## 1. 代码地图优先
+
+- 数据源：`.codegraph/codegraph.db`（Codegraph MCP）
+- 流程：`codegraph_status` → `codegraph_explore` → 按需 search/callers/impact
+- 未索引：提示 `codegraph init -i`，暂停结构相关生成
+
+## 2. 接口变更同步
+
+```
+后端 Controller/VO 变更
+  → 前端 src/api/ 更新
+  → Mock（若启用）
+  → version-log.md
+```
+
+## 3. 联调检查清单
+
+- [ ] URL 与 `@RequestMapping` 一致
+- [ ] HTTP 方法一致
+- [ ] 请求/响应字段对齐
+- [ ] 分页参数对齐
+
+## 4. 双 AI SSOT
+
+| 层 | 路径 |
+|----|------|
+| SSOT | `.trae/rules/`、`.trae/skills/`、`.trae/iterations/` |
+| Cursor 桥接 | `.cursor/rules/*.mdc` → `@.trae/rules/...` |
+
+## 5. 开发协作入口
+
+- 全局工具：`dev-collab-toolkit`（指挥官 + 多角色）
+- 项目入驻：`dual-ai-onboarding` + `dev-collab-install`
