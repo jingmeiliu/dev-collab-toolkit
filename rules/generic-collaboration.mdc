@@ -30,10 +30,15 @@
 
 | 层 | 路径 |
 |----|------|
-| SSOT | `.trae/rules/`、`.trae/skills/`、`.trae/iterations/` |
+| SSOT | `.trae/rules/`、`.trae/skills/`（**仍在 `.trae/` 内**） |
+| 迭代 | **`iterations/`**（项目根目录；**仅此**从 `.trae/iterations/` 迁出） |
 | Cursor 桥接 | `.cursor/rules/*.mdc` → `@.trae/rules/...` |
 
-## 5. 开发协作入口
+## 5. 项目迭代范围
+
+**`iterations/` 与 `version-log.md` 仅记录本项目业务代码变更**；AI 配置、全局工具安装不归入。详见 [project-iterations-scope.mdc](project-iterations-scope.mdc)。
+
+## 6. 开发协作入口
 
 - 全局工具：`dev-collab-toolkit`（指挥官 + 多角色）
 - 项目入驻：`dual-ai-onboarding` + `dev-collab-install`

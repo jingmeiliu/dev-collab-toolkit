@@ -27,7 +27,9 @@ description: >-
 
 入驻报告输出后，额外执行：
 
-1. 若项目尚无 dev-collab 规范：从 `~/.cursor/skills/dev-collab-toolkit/rules/` 合并 generic rules 到 `.trae/rules/`（已有项目 SSOT 优先，只补缺）
+1. 若存在 **`.trae/iterations/`** → 迁移全部文件至项目根目录 **`iterations/`** 并删除旧目录
+2. 若缺失 **`iterations/`** → 创建并初始化 `current-sprint.md`、`version-log.md`
+3. 若项目尚无 dev-collab 规范：从 `~/.cursor/skills/dev-collab-toolkit/rules/` 合并 generic rules 到 `.trae/rules/`（已有项目 SSOT 优先，只补缺）
 2. 在报告中增加 **Dev Collab 就绪** 节：
    ```markdown
    ### Dev Collab 就绪
@@ -36,6 +38,7 @@ description: >-
    ```
 3. 若由 **指挥官** 调度：回报指挥官并附入驻报告摘要
 4. 若用户 **单独 @ 调用**：直接输出完整入驻报告，提示下一步可用 `@指挥官`
+5. **禁止** 更新项目 `version-log.md` 或将进展归档到 `iterations/`（非代码任务）
 
 ## 触发场景
 

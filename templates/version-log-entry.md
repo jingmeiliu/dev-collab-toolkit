@@ -10,4 +10,4 @@
 |------|----------|------|
 | xxx | xxx | xxx |
 
-**任务进展文档**: `.trae/iterations/<任务简称>-进展-YYYYMMDD-HHmm.md`
+**任务进展文档**: `iterations/<任务简称>-进展-YYYYMMDD-HHmm.md`

@@ -50,26 +50,26 @@
 
 ```mermaid
 flowchart TB
-    User[用户] --> CMD[指挥官 Commander]
-    CMD --> PO[@提示词优化专家]
-    PO --> RA[@需求分析拆解师]
-    RA --> FS[@全栈工程师]
-    FS --> CR[@code review]
+    User["用户"] --> CMD["指挥官 Commander"]
+    CMD --> PO["@提示词优化专家"]
+    PO --> RA["@需求分析拆解师"]
+    RA --> FS["@全栈工程师"]
+    FS --> CR["@code review"]
     CR -->|不通过| FS
-    CR --> TE[@测试工程师]
+    CR --> TE["@测试工程师"]
     TE -->|Bug| FS
     TE --> CMD
     CMD --> User
 
-    subgraph 安装层
-        INST[dev-collab-install]
-        DAI[@双AI入驻]
-        ARCH[@架构师]
+    subgraph installLayer ["安装层"]
+        INST["dev-collab-install"]
+        DAI["@双AI入驻"]
+        ARCH["@架构师"]
     end
 
-    subgraph 基础设施
-        CG[Codegraph MCP]
-        RULES[.trae/rules SSOT]
+    subgraph infra ["基础设施"]
+        CG["Codegraph MCP"]
+        RULES[".trae/rules SSOT"]
     end
 
     INST --> DAI
@@ -84,7 +84,8 @@ flowchart TB
 | 全局技能 | `~/.trae/skills/dev-collab-toolkit.md` | Trae 入口 |
 | 全局技能 | `~/.trae-cn/skills/dev-collab-toolkit/` | Trae-CN 镜像 |
 | Cursor 子代理 | `~/.cursor/agents/*.md` | `@指挥官` 等快捷调度 |
-| 项目 SSOT | `.trae/rules/`、`.trae/skills/` | **项目专属**，不复制全局工具 |
+| 项目 SSOT | `.trae/rules/`、`.trae/skills/` |
+| 项目迭代 | **`iterations/`**（项目根目录，不在 `.trae/` 内） |
 | 代码地图 | `.codegraph/codegraph.db` | Codegraph SQLite |
 
 ---
@@ -262,7 +263,7 @@ Trae-CN 通常在 `~/.trae-cn/mcps/` 下已有项目级 MCP 配置。确保 dev_
 
 ### 步骤 6：收尾
 
-- 进展文件 → `.trae/iterations/<简称>-进展-YYYYMMDD-HHmm.md`
+- 进展文件 → `iterations/<简称>-进展-YYYYMMDD-HHmm.md`
 - 更新 `version-log.md`
 - 输出任务完成报告
 
@@ -309,7 +310,8 @@ Trae-CN 通常在 `~/.trae-cn/mcps/` 下已有项目级 MCP 配置。确保 dev_
 ├── rules/
 │   ├── generic-frontend.mdc
 │   ├── generic-backend.mdc
-│   └── generic-collaboration.mdc
+│   ├── generic-collaboration.mdc
+│   └── project-iterations-scope.mdc   # 迭代范围原则
 └── templates/
     ├── progress-tracker.md
     ├── prompt-optimized.md
@@ -329,6 +331,10 @@ Trae-CN 通常在 `~/.trae-cn/mcps/` 下已有项目级 MCP 配置。确保 dev_
 ---
 
 ## 常见问题
+
+### Q: 什么该写进项目 version-log / iterations？
+
+**仅本项目业务代码变更**（前端/后端/SQL/对接代码）。AI 配置、全局技能、@双AI入驻、dev-collab-toolkit 安装 **不** 写入。详见 [rules/project-iterations-scope.mdc](rules/project-iterations-scope.mdc)。
 
 ### Q: 与 task-workflow.mdc 什么关系？
 
