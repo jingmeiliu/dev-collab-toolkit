@@ -72,9 +72,11 @@ description: >-
 
 1. 进展文档「最终验收清单」全部 ✅
 2. 状态改为「已完成」
-3. 归档至 `.trae/iterations/<任务简称>-进展-YYYYMMDD-HHmm.md`
-4. 更新 `.trae/iterations/version-log.md`（模板 [templates/version-log-entry.md](../templates/version-log-entry.md)）
+3. **仅业务代码任务**：归档至 `iterations/<任务简称>-进展-YYYYMMDD-HHmm.md`
+4. **仅业务代码任务**：更新 `iterations/version-log.md`
 5. 回报 **指挥官** 做终检
+
+> 纯配置/工具类任务：跳过步骤 3–4。见 [rules/project-iterations-scope.mdc](../rules/project-iterations-scope.mdc)。
 
 ## 禁止
 

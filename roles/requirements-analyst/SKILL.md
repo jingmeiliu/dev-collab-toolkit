@@ -17,8 +17,10 @@ description: >-
 2. **识别约束**：技术栈、依赖、兼容性、不可修改项
 3. **拆解子步骤**：3–8 个可独立验证步骤（P0 Bug 可 1–2 步）
 4. **生成执行计划表**（含验证方式）
-5. **创建进展文件**：项目根目录 `<任务简称>-进展.md`，模板见 [templates/progress-tracker.md](../templates/progress-tracker.md)
+5. **创建进展文件**（**仅业务代码开发任务**）：项目根目录 `<任务简称>-进展.md`，模板见 [templates/progress-tracker.md](../templates/progress-tracker.md)
 6. **请求用户确认**计划；确认后回报 **指挥官** 调度 **@全栈工程师**
+
+> 非代码任务（配置、全局工具）：不创建进展文件，不写入 version-log。见 [rules/project-iterations-scope.mdc](../rules/project-iterations-scope.mdc)。
 
 ## 执行计划模板
 

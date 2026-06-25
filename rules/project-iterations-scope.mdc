@@ -1,0 +1,48 @@
+# 项目迭代目录位置
+
+> **用途**: 各项目迭代管理原则；安装时合并到 `task-workflow.mdc` 或 `collaboration.mdc`
+>
+> **唯一变更**: 仅将 **`iterations/`** 放在项目根目录；**`.trae/rules/`、`.trae/skills/` 等其余 SSOT 仍在 `.trae/` 内，不得迁出。**
+
+---
+
+## 目录结构
+
+```
+project-root/
+├── .trae/                    # AI 配置 SSOT（规则、技能等 — 保持在此）
+│   ├── rules/                #   frontend / backend / collaboration / task-workflow
+│   ├── skills/               #   project-helper、yudao-scaffold 等
+│   └── rule-load-selfcheck.md
+├── .cursor/                  # Cursor 桥接 → @.trae/rules/...
+├── iterations/               # ★ 唯一从 .trae 迁出的目录：迭代跟踪
+│   ├── current-sprint.md
+│   ├── version-log.md
+│   └── *-进展-YYYYMMDD-HHmm.md
+├── tianchic-erp-html/        # 业务代码…
+└── tianchic_erp/
+```
+## 核心原则
+
+**项目 `iterations/` 仅保存本项目业务代码相关迭代。**
+
+| 纳入 | 不纳入 |
+|------|--------|
+| 前端业务代码 | AI 规则、技能、Cursor 桥接维护 |
+| 后端业务代码 | 全局 dev-collab-toolkit / dual-ai-onboarding |
+| SQL 迁移、对接 **代码** | 纯配置入驻、工具组安装 |
+
+## 三类产物去向
+
+| 任务类型 | 进展文档 | version-log | current-sprint |
+|----------|----------|-------------|----------------|
+| **业务代码开发** | 根目录 → 归档 `iterations/` | ✅ 更新 | ✅ 可更新 |
+| **项目内规则/技能** | 对话汇报 | ❌ | ❌ |
+| **全局工具/双 AI 入驻** | 入驻报告 | ❌ | ❌ |
+
+## Agent 自检
+
+归档或写 version-log 前：
+
+1. 本次是否修改了 **本项目业务源码**？
+2. 若否 → **跳过** 归档与 version-log

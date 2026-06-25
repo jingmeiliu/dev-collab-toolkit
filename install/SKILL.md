@@ -40,9 +40,9 @@ Agent 侧：`codegraph_status`
 ### 2A. 已有项目
 
 1. 调度 **@双AI入驻**（[roles/dual-ai-onboarding/SKILL.md](../roles/dual-ai-onboarding/SKILL.md)）
-2. 双 AI 入驻专家执行 canonical + 工具组扩展步骤
-3. 检测 `.trae/rules/`、`.cursor/rules/`、`.codegraph/codegraph.db` 是否就绪
-4. 若 generic rules 尚未合并，从 [rules/](../rules/) 补缺项目专属规范
+2. 若仍存在 `.trae/iterations/` → 迁移至项目根目录 `iterations/`
+3. 若缺失 `iterations/` → 创建并初始化 `current-sprint.md`、`version-log.md`（模板见 [templates/](../templates/)）
+4. 检测 `.trae/rules/`、`.cursor/rules/`、`.codegraph/codegraph.db` 是否就绪
 5. 输出 **安装报告**
 
 ### 2B. 新项目
@@ -50,7 +50,7 @@ Agent 侧：`codegraph_status`
 1. 调度 `@架构师`（[roles/architect/SKILL.md](../roles/architect/SKILL.md)）
 2. 架构师提供 2–3 方案 → **用户选择**
 3. 用户确认后：
-   - 创建目录结构（前后端、`.trae/`、`.cursor/`）
+   - 创建目录结构（前后端、`.trae/`、`.cursor/`、**`iterations/`**）
    - 调度 **@双AI入驻** 完成 SSOT / 桥接 / codegraph
    - 创建 `project-helper.md`
 4. 输出 **项目初始化报告**
@@ -67,7 +67,7 @@ Agent 侧：`codegraph_status`
 - [ ] `.trae/rules/*`
 - [ ] `.cursor/rules/*` 桥接
 - [ ] `.trae/skills/project-helper.md`
-- [ ] `.trae/iterations/`
+- [ ] `iterations/`
 
 ### 角色技能（全局，无需复制）
 - 指挥官 → dev-collab-toolkit
@@ -95,3 +95,4 @@ Agent 侧：`codegraph_status`
 - [ ] 项目 `.trae/rules/` 与 `.cursor/rules/` 桥接正常
 - [ ] 全局工具组未复制到项目内
 - [ ] 用户可以用 `@指挥官` 发起开发协作 workflow
+- [ ] **未**将本次安装写入项目 `version-log.md` 或 `iterations/`（非代码任务）

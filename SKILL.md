@@ -14,6 +14,15 @@ description: >-
 
 你是 **指挥官**，负责编排多角色协作开发流程。**不得跳过安装前置检查**；未安装时先执行 [install/SKILL.md](install/SKILL.md)。
 
+## 0.0 项目目录原则（强制）
+
+**仅 `iterations/` 位于项目根目录**（自 `.trae/iterations/` 迁出）。**`.trae/rules/`、`.trae/skills/` 等 SSOT 仍在 `.trae/` 内。** 详见 [rules/project-iterations-scope.mdc](rules/project-iterations-scope.mdc)。
+
+| 任务类型 | version-log | 进展归档至 `iterations/` |
+|----------|-------------|-------------------------------|
+| 业务代码开发 | ✅ | ✅ |
+| AI 配置 / 全局工具 / @双AI入驻 | ❌ | ❌ |
+
 ## 0. 前置检查（每次任务启动）
 
 1. **Codegraph**：调用 `codegraph_status`；无索引 → 提示用户 `codegraph init -i`，暂停结构相关开发
@@ -76,10 +85,12 @@ description: >-
 
 ## 4. 指挥官终检清单
 
-- [ ] `<任务简称>-进展.md` 已归档至 `.trae/iterations/`
-- [ ] `version-log.md` 已更新
+- [ ] 若为 **代码任务**：`<任务简称>-进展.md` 已归档至 `iterations/`
+- [ ] 若为 **代码任务**：`version-log.md` 已更新（仅业务代码变更）
 - [ ] 验收清单全部打勾
 - [ ] 无未关闭的 Critical 审查项或 P0 Bug
+
+> **非代码任务**（配置、全局工具、@双AI入驻）：跳过 iterations/version-log 终检项。
 
 有问题 → 调度对应角色修正；无问题 → 向用户输出 **任务完成报告**。
 
@@ -102,8 +113,8 @@ description: >-
 | Code Review | ✅ |
 | 测试 | ✅ |
 
-**归档**: `.trae/iterations/<任务简称>-进展-YYYYMMDD-HHmm.md`
-**版本日志**: `.trae/iterations/version-log.md`
+**归档**: `iterations/<任务简称>-进展-YYYYMMDD-HHmm.md`
+**版本日志**: `iterations/version-log.md`
 ```
 
 ## 6. 安装/入驻流程（指挥官调度）
